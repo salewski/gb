@@ -1,10 +1,10 @@
 package main
 
 import (
-	"errors"
-	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/pkg/errors"
 
 	"github.com/constabulary/gb/debug"
 )
@@ -176,7 +176,7 @@ func setArgFound(arg string) error {
 	nArg := strings.TrimPrefix(arg, "-")
 	if val, ok := testFlagDefn[nArg]; ok {
 		if val.present {
-			err = fmt.Errorf("%q flag may be set only once", arg)
+			err = errors.Errorf("%q flag may be set only once", arg)
 		} else {
 			testFlagDefn[nArg].present = true
 		}
